@@ -1,6 +1,7 @@
 package com.andradel.crud.api.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,32 +18,26 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public List<Cliente> listarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.clienteRepository.findAll();
 	}
 
 	@Override
-	public Cliente listarPorId(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<Cliente> listarPorId(String id) {
+		return this.clienteRepository.findById(id);
 	}
 
 	@Override
 	public Cliente cadastrar(Cliente cliente) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.clienteRepository.save(cliente);
 	}
 
 	@Override
 	public Cliente atualizar(Cliente cliente) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.clienteRepository.save(cliente);
 	}
 
 	@Override
 	public void remover(String id) {
-		// TODO Auto-generated method stub
-
+		this.clienteRepository.deleteById(id);
 	}
-
 }
