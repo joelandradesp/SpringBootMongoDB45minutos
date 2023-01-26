@@ -41,3 +41,12 @@ Nesta aula você aprenderá a criar um CRUD completo de cadastro de clientes: Ge
 
 Java utilizado versão 17.
 
+## Packages do Projeto Crud
+
+* document - são os meus documentos do mongodb. 
+* repository - tem acesso aos documentos. As operações padrões são herdadas do MongoRepository.
+* service - A camada de serviços é a responsável por criar as ações que vão fazer a persistência e acesso ao banco de dados.
+
+* @Autowired
+
+O Autowired (@Autowired) é a anotação mais utiliza com relação a injeção de dependências. Como o próprio nome diz, o Autowired, indica um ponto aonde a injeção automática deve ser aplicada. Esta pode ser usada em métodos, atributos e construtores.
