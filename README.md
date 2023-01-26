@@ -6,7 +6,7 @@ Kazale.com
 
 Instrutor: Marcio Souza.
 
-## API RestFul com Spring Boot, Java 8, MongoDB
+## API RestFull com Spring Boot, Java 8, MongoDB
 
 Nesta aula você aprenderá a criar um CRUD completo de cadastro de clientes: Get, Post, Put, Delete.
 
@@ -28,4 +28,16 @@ Nesta aula você aprenderá a criar um CRUD completo de cadastro de clientes: Ge
 
 ## STS - Spring Tool Suite
 
-* Usar o site https://start.spring.io/ ou no Spring Tool Suite - File - New - Spring Starter Projetc.
+* Usar o site https://start.spring.io/ ou no Spring Tool Suite - File - New - Spring Starter Project.
+* Caso não tenha o Spring Tool Suite instalado, basta baixar no site: https://spring.io/tools.
+* Versão em 26/01/2023 - 4.17.1 - Windows X86_64.
+
+## Depêndencias
+
+* Spring Boot DevTools
+* Spring Data MongoDB
+* Spring Security
+* Spring Web
+
+Java utilizado versão 8.
+
