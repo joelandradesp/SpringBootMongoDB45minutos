@@ -39,5 +39,5 @@ Nesta aula você aprenderá a criar um CRUD completo de cadastro de clientes: Ge
 * Spring Security
 * Spring Web
 
-Java utilizado versão 8.
+Java utilizado versão 17.
 
