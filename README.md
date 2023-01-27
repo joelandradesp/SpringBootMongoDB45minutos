@@ -115,8 +115,6 @@ Utilizando Hibernate Validator.
 
 ```
 
-25:35
-
 ## Deprecated
 
 Houve algumas mudanças das bibliotecas de validações.
@@ -142,7 +140,7 @@ import org.hibernate.validator.constraints.NotBlank;
 ```
 
 
-**Deprecated:
+**Deprecated:**
 
 ```
 
@@ -191,7 +189,7 @@ public class Response<T> {
 
 Usei o Response para retornar um Inteiro, um cliente, e uma Lista de Cliente. Você pode utilizar qualquer tipo de retorno.
 
-** Classe utilitária Response:**
+**Classe utilitária Response:**
 
 ```
 
@@ -230,3 +228,7 @@ public class Response<T> {
 ```
 
 * Parametro BindingResult - é o resultado da minha validação. Se possue erros ou não.
+
+## Execução
+
+Ao executar como Spring Boot App clicando em cima do projeto Run As ou Debug As. Vai subir um Tomcat local na porta 8080.
