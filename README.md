@@ -85,6 +85,8 @@ E ClienteService é a Interface por boas práticas.
 
 * @DeleteMapping - Semelhante ao @PutMapping, é utilizado para deletar um registro. E se passa também o id como parametro.
 
+* @Valid - Para ativar as validações da Entidade (Campo vazio, Email inválido)
+
 ## Endpoints
 
 ** Observação:** a porta 8080 pode ser modificada caso tenha conflito com outra aplicação que esteja usando. O arquivo application.properties temos uma propriedade server.port = 8080.
@@ -97,3 +99,134 @@ Na sua ausência o padrão é 8080.
 ResponseEntity é um objeto próprio do Spring Boot que ajuda a retornar os dados da comunicação.
 
 ResponseEntity.ok retorna um codigo 200 que quer dizer sucesso.
+
+## Validações
+
+Utilizando Hibernate Validator.
+
+`NotEmpty` - Deprecated (Depreciado).
+
+```
+
+	@NotNull(message = "Nome não pode ser vazio")
+	public String getNome() {
+		return nome;
+	}
+
+```
+
+25:35
+
+## Deprecated
+
+Houve algumas mudanças das bibliotecas de validações.
+
+Antes no pom.xml declaravamos hibernate-validator:
+
+```
+
+<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.2.Final</version>
+</dependency>
+
+```
+
+**Deprecated:**
+
+```
+
+import org.hibernate.validator.constraints.NotBlank;
+
+```
+
+
+**Deprecated:
+
+```
+
+javax.validation.constraints.NotBlank
+javax.validation.constraints.NotEmpty
+
+```
+
+### Agora deve ser usado a validação do jakarta:
+
+A Oracle passou a tutela para a Eclipse Foundation (Jakarta).
+
+```
+
+import jakarta.validation.constraints.NotNull
+
+```
+
+## Genericos
+
+Quando na controller, tentamos implementar uma validação de erros. O Retorno esperado era Cliente:
+
+```
+
+	@PostMapping
+	public ResponseEntity<Cliente> cadastrar(@Valid @RequestBody Cliente cliente, BindingResult result){
+		if (result.hasErrors()) {
+			List<String> erros = new ArrayList<String>();
+			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
+			return ResponseEntity.badRequest().body(erros);
+		} 
+		return ResponseEntity.ok(this.clienteService.cadastrar(cliente));
+	}
+
+```
+
+A linha return ResponseEntity.badRequest().body(erros); causa uma erro de compilação, pois o método cadastrar espera um Cliente como retorno e não erros de validações, cadastro.
+
+Response<T> - com essa atribuição posso receber qualquer coisa:
+
+```
+public class Response<T> {
+
+}
+```
+
+Usei o Response para retornar um Inteiro, um cliente, e uma Lista de Cliente. Você pode utilizar qualquer tipo de retorno.
+
+** Classe utilitária Response:**
+
+```
+
+import java.util.List;
+
+public class Response<T> {
+	
+	private T data;
+	private List<String> erros;
+	
+	public Response(T data) {
+		this.data = data;
+	}
+	
+	public Response(List<String> erros) {
+		this.erros = erros;
+	}
+
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
+	}
+
+	public List<String> getErros() {
+		return erros;
+	}
+
+	public void setErros(List<String> erros) {
+		this.erros = erros;
+	}
+}
+
+```
+
+* Parametro BindingResult - é o resultado da minha validação. Se possue erros ou não.
