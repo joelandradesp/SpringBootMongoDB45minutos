@@ -104,7 +104,7 @@ ResponseEntity.ok retorna um codigo 200 que quer dizer sucesso.
 
 Utilizando Hibernate Validator.
 
-`NotEmpty` - Deprecated (Depreciado).
+`NotEmpty` - Deprecated (Depreciado no Hibernate Validator, mudar para Jakarta).
 
 ```
 
