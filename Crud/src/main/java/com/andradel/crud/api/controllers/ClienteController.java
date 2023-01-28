@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(path = "/api/clientes")
+@CrossOrigin
 public class ClienteController {
 	
 	@Autowired
@@ -40,7 +42,7 @@ public class ClienteController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Response<Cliente>> cadastrar(@Valid @RequestBody Cliente cliente, BindingResult result){
+	public ResponseEntity<Response<Cliente>> cadastrar(@RequestBody @Valid Cliente cliente, BindingResult result){
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
@@ -50,7 +52,7 @@ public class ClienteController {
 	}
 
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Cliente>> atualizar(@PathVariable(name = "id") String id, @Valid @RequestBody Cliente cliente, BindingResult result){
+	public ResponseEntity<Response<Cliente>> atualizar(@PathVariable(name = "id") String id, @RequestBody @Valid Cliente cliente, BindingResult result){
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));

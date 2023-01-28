@@ -4,7 +4,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Document
 public class Cliente {
@@ -27,7 +29,9 @@ public class Cliente {
 		this.id = id;
 	}
 
-	@NotNull(message = "Nome não pode ser vazio")
+	@NotNull(message = "Nome não pode ser nulo")
+	@NotEmpty(message = "Nome não pode ser vazio")
+	@Size(min=3, max=25, message = "Nome Inválido")
 	public String getNome() {
 		return nome;
 	}
@@ -36,7 +40,7 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	@NotNull(message = "Email não pode ser vazio")
+	@NotEmpty(message = "Email não pode ser vazio")
 	@Email(message = "Email inválido")
 	public String getEmail() {
 		return email;
@@ -46,7 +50,7 @@ public class Cliente {
 		this.email = email;
 	}
 
-	@NotNull(message = "CPF não pode ser vazio")
+	@NotEmpty(message = "CPF não pode ser vazio")
 	public String getCpf() {
 		return cpf;
 	}
@@ -54,4 +58,10 @@ public class Cliente {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+//	public Cliente(String name, String email, String cpf) {
+//		this.nome = name;
+//		this.email = email;
+//		this.cpf = cpf;
+//	}
 }

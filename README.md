@@ -149,6 +149,15 @@ javax.validation.constraints.NotEmpty
 
 ```
 
+No pom.xml é necessário colocar uma dependência se não a validação não funciona com ** @Valid **, além disso é necessário colocar o ** @Valid ** após o @RequestBody:
+
+```
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		
+```
 ### Agora deve ser usado a validação do jakarta:
 
 A Oracle passou a tutela para a Eclipse Foundation (Jakarta).
@@ -232,3 +241,5 @@ public class Response<T> {
 ## Execução
 
 Ao executar como Spring Boot App clicando em cima do projeto Run As ou Debug As. Vai subir um Tomcat local na porta 8080.
+
+
