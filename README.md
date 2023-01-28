@@ -287,5 +287,5 @@ cliente
 
 Abaixo a consulta feita pelo Postman:
 
-![Postman](/Imagens/postman.jpg "Imagem da consulta no Postman")
+![Postman](/Imagens/Postman.jpg "Imagem da consulta no Postman")
 
