@@ -242,4 +242,50 @@ public class Response<T> {
 
 Ao executar como Spring Boot App clicando em cima do projeto Run As ou Debug As. Vai subir um Tomcat local na porta 8080.
 
+## MongoDB
+
+* Server - no prompt de comando digite mongod. Não pode fechar a janela enquanto esta consulta, ou persistindo os dados no Java.
+
+* Cliente - no prompt de comando digite mongo.
+
+Abaixo os comandos para consulta dos dados persistidos pela aplicação java:
+
+```
+
+> use crudapi
+switched to db crudapi
+> show tables
+cliente
+> db.cliente.find().pretty()
+{
+        "_id" : ObjectId("63d467353a72373e5d5bbc57"),
+        "nome" : "Almir",
+        "email" : "almirandrade1938@gmail.com",
+        "cpf" : "23413409891",
+        "_class" : "com.andradel.crud.api.documents.Cliente"
+}
+{
+        "_id" : ObjectId("63d48f7623c1817b4991ea42"),
+        "nome" : "Joel",
+        "email" : "joelguarulhos@gmail.com",
+        "cpf" : "264.587.278-60",
+        "_class" : "com.andradel.crud.api.documents.Cliente"
+}
+{
+        "_id" : ObjectId("63d4908c4199141cf0ff68a1"),
+        "nome" : "Simone",
+        "email" : "simoneoliveira@gmail.com",
+        "cpf" : "42537785690",
+        "_class" : "com.andradel.crud.api.documents.Cliente"
+}
+>
+
+```
+
+
+## Postman
+
+Abaixo a consulta feita pelo Postman:
+
+![Postman](/Imagens/postman.jpg "Imagem da consulta no Postman")
 

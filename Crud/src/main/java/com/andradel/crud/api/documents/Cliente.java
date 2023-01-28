@@ -1,5 +1,6 @@
 package com.andradel.crud.api.documents;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -51,6 +52,7 @@ public class Cliente {
 	}
 
 	@NotEmpty(message = "CPF não pode ser vazio")
+	@CPF(message = "CPF Inválido")
 	public String getCpf() {
 		return cpf;
 	}
